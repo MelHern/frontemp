@@ -41,6 +41,22 @@ import {principal} from '../store/principal';
 
 
 const store = principal()
-store.guardatoken("lalalalalalalal")
+const options = {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: {email:email,password:password}
+};
+
+
+fetch(process.env.VUE_APP_ROOT_API+"/login", options)
+  .then(response => {
+    store.guardatoken(response")
+  })
+  
+  .catch(err => {
+    console.error("ERROR: ", err.message)
+  })
 console.log(store.token);
 </script>
