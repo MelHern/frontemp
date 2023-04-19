@@ -49,14 +49,33 @@ const options = {
   body: {email:email,password:password}
 };
 
+login(){
+    fetch(process.env.VUE_APP_ROOT_API+"/login", options)
+      .then(response => {
+        store.guardatoken(response.data)
+      })
 
-fetch(process.env.VUE_APP_ROOT_API+"/login", options)
-  .then(response => {
-    store.guardatoken(response")
-  })
+      .catch(err => {
+        console.error("ERROR: ", err.message)
+      })
+      console.log(store.token);
+  }
   
-  .catch(err => {
-    console.error("ERROR: ", err.message)
-  })
-console.log(store.token);
+  registrar(){
+    fetch(process.env.VUE_APP_ROOT_API+"/register", options)
+      .then(response => {
+        if(response.data == 'ok'){
+            alert("usuario creado");
+        }
+        else{
+            alert("usuarion no creado");
+            }
+      })
+
+      .catch(err => {
+        console.error("ERROR: ", err.message)
+      })
+      console.log(store.token);
+  }
+
 </script>
