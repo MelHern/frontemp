@@ -1,18 +1,18 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div >
+    <div v-show="store.bienvenida" style="margin:auto">Bienvendio a...{{ store.bienvenida }}</div>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+<script lang="ts" setup>
+import {principal} from '../store/principal';
+import { onMounted, onBeforeMount } from 'vue'
+const store = principal()
+store.guardatoken("lalalalalalalal")
 
-export default defineComponent({
-  name: 'HomeView',
-  components: {
-    HelloWorld,
-  },
-});
+onMounted(() =>{
+  store.setBienvenida(true);
+})
+
+console.log(store.bienvenida);
 </script>
