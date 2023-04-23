@@ -42,7 +42,7 @@ import {ref} from 'vue'
 
 const password = ref('');
 const email = ref('');
-const store = principal()
+const store = principal();
 
 
 const login=function(){
@@ -59,13 +59,21 @@ const login=function(){
 };
 
     fetch(process.env.VUE_APP_ROOT_API+"users/login", options)
-      .then(response => {
-        store.guardatoken(response.data)
-      })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+
+      
+      store.guardatoken(data.data);
+      console.log(store.token,"token");
+    })
 
       .catch(err => {
         console.error("ERROR: ", err.message)
       })
+
+  
    
   }
   
