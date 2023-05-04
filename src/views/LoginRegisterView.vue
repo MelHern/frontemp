@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="row" style="width:50%; border-top:1px solid grey;border-left:1px solid grey;border-right:1px solid grey;background-color:beige; height:40px;margin-left: auto; margin-right: auto;">
-        <div id="tablogin" class="col-6" style="background-color: white; @click="cambiaTab()"">Login</div>
+        <div id="tablogin" class="col-6" style="background-color: white; @click="cambiaTab()">Login</div>
         <div id="tabregistro" class="col-6" @click="cambiaTab()">Registro</div>
     </div>
  <div id="divregistro">   
