@@ -1,9 +1,10 @@
 <template>
 <div>
     <div class="row" style="width:50%; border-top:1px solid grey;border-left:1px solid grey;border-right:1px solid grey;background-color:beige; height:40px;margin-left: auto; margin-right: auto;">
-        <div id="tablogin" class="col-6" style="background-color: white;">Login</div>
-        <div id="tabregistro" class="col-6">Registro</div>
+        <div id="tablogin" class="col-6" style="background-color: white; @click="cambiaTab()"">Login</div>
+        <div id="tabregistro" class="col-6" @click="cambiaTab()">Registro</div>
     </div>
+ <div id="divregistro">   
     <div id="cuerpo" class=" w-50 p-4" style="margin-left: auto; margin-right: auto; border-left: 1px solid grey ;border-right: 1px solid grey ; border-bottom: 1px solid grey ;">
         
   <div class="row mt-4">
@@ -31,7 +32,9 @@
     </div>
 
     </div>
+</div>
 
+<div id="divlogin"></div>
 {{ email }}
 </div>
 </template>
@@ -101,6 +104,23 @@ const login=function(){
         console.error("ERROR: ", err.message)
       })
       console.log(store.token);
+  }
+  
+  const cambiaTab= function(e){
+    targetId = e.currentTarget.id;
+    
+    if(targetId == "tabregistro" ){
+        document.getElementById("tabregistro").style.background = 'white';
+        document.getElementById("tablogin").style.background = 'transparent';
+        document.getElementById("divregistro").style.display = 'block';
+        document.getElementById("divlogin").style.display = 'none';
+    }
+    else if(targetId == "tablogin" ){
+     document.getElementById("tablogin").style.background = 'white';
+     document.getElementById("tabregistro").style.background = 'transparent';
+      document.getElementById("divregistro").style.display = 'none';
+        document.getElementById("divlogin").style.display = 'block';
+    }
   }
 
 </script>
