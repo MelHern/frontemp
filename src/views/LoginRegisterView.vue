@@ -107,7 +107,7 @@ const login=function(){
   }
   
   const cambiaTab= function(e){
-    targetId = e.currentTarget.id;
+    let targetId = e.currentTarget.id;
     
     if(targetId == "tabregistro" ){
         document.getElementById("tabregistro").style.background = 'white';
