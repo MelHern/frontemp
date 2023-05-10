@@ -1,8 +1,8 @@
 <template>
 <div>
     <div class="row" style="width:50%; border-top:1px solid grey;border-left:1px solid grey;border-right:1px solid grey;background-color:beige; height:40px;margin-left: auto; margin-right: auto;">
-        <div id="tablogin" class="col-6" style="background-color: white;" @click="cambiaTab()">Login</div>
-        <div id="tabregistro" class="col-6" @click="cambiaTab()">Registro</div>
+        <div id="tabregistro" class="col-6" style="background-color: white;" @click="cambiaTab">Registro</div>
+        <div id="tablogin" class="col-6" @click="cambiaTab">Login</div>
     </div>
  <div id="divregistro">   
     <div id="cuerpo" class=" w-50 p-4" style="margin-left: auto; margin-right: auto; border-left: 1px solid grey ;border-right: 1px solid grey ; border-bottom: 1px solid grey ;">
@@ -17,7 +17,10 @@
     <div class="col-3"><label for="exampleDropdownFormPassword2">Password</label></div>
     <div class="col-9"><input v-model="password" type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password"></div>
   </div>
-
+  <div class="row mt-4">
+          <div class="col-3"><label for="exampleDropdownFormPassword2">Confirma Password</label></div>
+          <div class="col-9"><input v-model="password2" type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password"></div>
+        </div>
 
   <div class="row mt-3">
     
@@ -34,7 +37,36 @@
     </div>
 </div>
 
-<div id="divlogin"></div>
+<div id="divlogin">
+  <div id="cuerpo2" class=" w-50 p-4" style="margin-left: auto; margin-right: auto; border-left: 1px solid grey ;border-right: 1px solid grey ; border-bottom: 1px solid grey ;">
+        
+        <div class="row mt-4">
+          <div class="col-3"><label for="exampleDropdownFormEmail2">Email address</label></div>
+          <div class="col-9"><input v-model="email" type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com"></div>
+        </div>
+      
+      
+        <div class="row mt-4">
+          <div class="col-3"><label for="exampleDropdownFormPassword2">Password</label></div>
+          <div class="col-9"><input v-model="password" type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password"></div>
+        </div>
+     
+      
+        <div class="row mt-3">
+          
+          <div class="col-9"><label class="" for="dropdownCheck2">
+            Remember me
+          </label> <input type="checkbox" name="remember" id="remember"></div>
+          
+        </div>
+      
+          <div class=" col-12 mt-3">
+              <button class="btn btn-primary w-50" style="margin-left:auto; margin-right: auto;" @click="login">Log in</button>
+          </div>
+      
+          </div>
+
+</div>
 {{ email }}
 </div>
 </template>
@@ -44,6 +76,7 @@ import {principal} from '../store/principal';
 import {ref} from 'vue'
 
 const password = ref('');
+const password2 = ref('');
 const email = ref('');
 const store = principal();
 
@@ -106,7 +139,9 @@ const login=function(){
       console.log(store.token);
   }
   
-  const cambiaTab= function(e){
+  const cambiaTab= function(e:Event){
+
+    console.log(e);
     let targetId = e.currentTarget.id;
     
     if(targetId == "tabregistro" ){
